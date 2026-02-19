@@ -1,4 +1,7 @@
-# Healthcare Cost Prediction and Risk Segmentation (Course Project)
+![Workflow Preview](figures/workflow.png)
+
+# Healthcare Cost Prediction and Risk Segmentation
+**Project Type:** Academic Course Project (MSc Data Science)
 
 This repository contains a machine learning and data analytics project developed as part of the MSc Data Science programme. The objective was to analyse healthcare insurance data, build predictive models for cost estimation, identify high-risk customer segments, and simulate cost-reduction interventions.
 
@@ -35,7 +38,30 @@ Features include:
 
 ---
 
-# ⚙️ Project Workflow
+# 📊 Project Workflow and Machine Learning Pipeline
+
+This section provides a visual overview of the complete analytics process followed in this project, from data acquisition to predictive modelling, segmentation, and anomaly detection.
+
+## 🔄 End-to-End Project Workflow
+
+The workflow diagram illustrates the overall sequence of steps involved in this project, including data preprocessing, exploratory analysis, model development, and business interpretation.
+
+Key stages include:
+- Data collection and loading
+- Data cleaning and preprocessing
+- Exploratory Data Analysis (EDA)
+- Feature engineering and encoding
+- Predictive modelling
+- Model evaluation
+- Segmentation and anomaly detection
+- Interpretation and decision support
+
+This structured approach ensures a systematic and reproducible machine learning workflow.
+
+
+
+
+
 
 The project follows a structured analytics pipeline:
 
