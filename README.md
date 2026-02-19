@@ -209,20 +209,22 @@ jupyter notebook
 
 ```
 healthcare-cost-prediction-analytics-course-project/
-
-│
 ├── notebooks/
-│   └── healthcare_cost_prediction.ipynb
-│
-├── reports/
-│   └── project_report.pdf
+│ └── healthcare_cost_prediction.ipynb
 │
 ├── figures/
-│   └── visualizations
+│ ├── workflow.png
+│ ├── ml_pipeline.png
+│ ├── correlation_heatmap.png
+│ ├── clustering.png
+│ └── anomaly_detection.png
 │
-├── README.md
+├── report/
+│ └── Data_Analytics_HP_Report.pdf
 │
-└── requirements.txt
+├── requirements.txt
+│
+└── README.md
 ```
 
 ---
