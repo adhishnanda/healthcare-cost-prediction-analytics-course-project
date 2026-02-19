@@ -1,4 +1,4 @@
-![Workflow Preview](figures/workflow.png)
+![Workflow Preview](figures/aihc.png)
 
 # Healthcare Cost Prediction and Risk Segmentation
 **Project Type:** Academic Course Project (MSc Data Science)
@@ -46,6 +46,8 @@ This section provides a visual overview of the complete analytics process follow
 
 The workflow diagram illustrates the overall sequence of steps involved in this project, including data preprocessing, exploratory analysis, model development, and business interpretation.
 
+![Workflow Preview](figures/workflow_overall.png)
+
 Key stages include:
 - Data collection and loading
 - Data cleaning and preprocessing
@@ -58,10 +60,11 @@ Key stages include:
 
 This structured approach ensures a systematic and reproducible machine learning workflow.
 
+## ⚙️ Machine Learning Pipeline
 
+The machine learning pipeline shows the detailed modelling and analytical components used to generate predictions and insights.
 
-
-
+![Workflow Preview](figures/ml_pipeline.png)
 
 The project follows a structured analytics pipeline:
 
@@ -140,6 +143,17 @@ Simulated cost-reduction interventions such as:
 Estimated potential healthcare cost savings.
 
 This demonstrates how analytics can support decision-making beyond prediction.
+
+## 🎯 Why This Workflow Matters
+
+This pipeline demonstrates a complete end-to-end data science lifecycle, including:
+
+- Predictive modelling
+- Unsupervised learning
+- Anomaly detection
+- Business interpretation
+
+It reflects real-world industry workflows used in healthcare analytics and insurance cost prediction.
 
 ---
 
@@ -238,14 +252,14 @@ This is an academic course project intended for learning and portfolio purposes.
 
 ---
 
-📬 Contact
-Adhish Nanda
-MSc Data Science
-Berlin, Germany
+## Author
 
-LinkedIn: https://www.linkedin.com/in/adhishnanda
+Adhish Nanda  
+MSc Data Science, Berlin  
+[LinkedIn](https://www.linkedin.com/in/adhishnanda)
 
-GitHub: https://github.com/adhishnanda
+
+
 
 
 
