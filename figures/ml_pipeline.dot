@@ -1,0 +1,114 @@
+digraph MLPipeline {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    nodesep=0.35,
+    ranksep=0.45,
+    splines=ortho,
+    concentrate=true
+  ];
+
+  node [
+    shape=box,
+    style="rounded",
+    fontname="Helvetica",
+    fontsize=11,
+    margin="0.18,0.12"
+  ];
+
+  edge [
+    fontname="Helvetica",
+    fontsize=10
+  ];
+
+  // --- Inputs ---
+  subgraph cluster_input {
+    label="Input";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    I1 [label="Raw Data\n(age, sex, bmi, children,\nsmoker, region, charges)"];
+  }
+
+  // --- Preprocessing ---
+  subgraph cluster_preproc {
+    label="Preprocessing";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    P1 [label="Data Cleaning\nvalidate schema, handle missing"];
+    P2 [label="Split Features/Target\nX = predictors, y = charges"];
+    P3 [label="Encoding\none-hot for categorical vars"];
+    P4 [label="Scaling\nstandardize numeric vars\n(if required by model)"];
+  }
+
+  // --- Modeling ---
+  subgraph cluster_model {
+    label="Modeling";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    M1 [label="Train/Test Split\n(e.g., 80/20, random_state fixed)"];
+    M2 [label="Baseline Model\nLinear Regression"];
+    M3 [label="Non-linear Models\nRandom Forest, XGBoost"];
+    M4 [label="Model Selection\nchoose best by validation metrics"];
+  }
+
+  // --- Evaluation ---
+  subgraph cluster_eval {
+    label="Evaluation & Diagnostics";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    E1 [label="Metrics\nR², MAE"];
+    E2 [label="Residual Diagnostics\nactual - predicted"];
+    E3 [label="Explainability\nfeature importance"];
+  }
+
+  // --- Downstream uses ---
+  subgraph cluster_downstream {
+    label="Downstream Analytics (Decision Support)";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    D1 [label="Risk Segmentation\nK-Means on standardized features"];
+    D2 [label="Anomaly Detection\nIsolation Forest\n(or residual-based outliers)"];
+    D3 [label="Prescriptive Simulation\ncounterfactual scenarios\n(smoking/BMI changes)"];
+  }
+
+  // --- Outputs ---
+  subgraph cluster_output {
+    label="Outputs";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    O1 [label="Predictions\nestimated charges"];
+    O2 [label="Risk Profiles\ncluster membership + avg charges"];
+    O3 [label="Anomaly List\ncases for investigation"];
+    O4 [label="Estimated Savings\nscenario comparisons"];
+  }
+
+  // --- Flow ---
+  I1 -> P1 -> P2 -> P3 -> P4 -> M1;
+
+  M1 -> M2 -> M4;
+  M1 -> M3 -> M4;
+
+  M4 -> O1;
+  M4 -> E1 -> E2 -> E3;
+
+  // Diagnostics feed decision-support steps
+  E2 -> D2;
+  P4 -> D1;
+  O1 -> D3;
+
+  D1 -> O2;
+  D2 -> O3;
+  D3 -> O4;
+}

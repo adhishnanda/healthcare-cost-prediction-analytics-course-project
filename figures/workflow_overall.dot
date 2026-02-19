@@ -1,0 +1,102 @@
+digraph OverallWorkflow {
+  graph [
+    rankdir=TB,
+    bgcolor="white",
+    nodesep=0.35,
+    ranksep=0.45,
+    splines=ortho,
+    concentrate=true
+  ];
+
+  node [
+    shape=box,
+    style="rounded",
+    fontname="Helvetica",
+    fontsize=11,
+    margin="0.18,0.12"
+  ];
+
+  edge [
+    fontname="Helvetica",
+    fontsize=10
+  ];
+
+  // --- Stage 1: Data ---
+  subgraph cluster_data {
+    label="1. Data";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    D1 [label="Dataset\n(insurance.csv)"];
+    D2 [label="Feature Types\nNumerical + Categorical"];
+  }
+
+  // --- Stage 2: Prep & EDA ---
+  subgraph cluster_prep {
+    label="2. Preprocessing & EDA";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    P1 [label="Cleaning & Validation\nmissing values, dtypes"];
+    P2 [label="Encoding\none-hot (sex, smoker, region)"];
+    P3 [label="Scaling\nstandardization (where needed)"];
+    E1 [label="Exploratory Data Analysis\ncorrelations, distributions, plots"];
+  }
+
+  // --- Stage 3: Predictive Modeling ---
+  subgraph cluster_pred {
+    label="3. Predictive Modeling";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    M1 [label="Train/Test Split\n(random_state fixed)"];
+    M2 [label="Model Training\nLinear Regression, Random Forest, XGBoost"];
+    M3 [label="Evaluation\nR², MAE, residual analysis"];
+    M4 [label="Model Explainability\nfeature importance (best model)"];
+  }
+
+  // --- Stage 4: Decision Support Extensions ---
+  subgraph cluster_decision {
+    label="4. Decision Support Extensions";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    S1 [label="Risk Segmentation\nK-Means + elbow method"];
+    S2 [label="Cluster Profiling\navg charges, feature patterns"];
+    A1 [label="Anomaly Detection\nIsolation Forest / residual-based"];
+    A2 [label="Anomaly Review\nhigh deviation cases"];
+    R1 [label="Prescriptive Simulation\nsmoking cessation, BMI reduction"];
+  }
+
+  // --- Stage 5: Outputs ---
+  subgraph cluster_output {
+    label="5. Outputs";
+    fontsize=12;
+    fontname="Helvetica";
+    style="rounded,dashed";
+
+    O1 [label="Insights & Recommendations\nrisk groups + savings + anomalies"];
+    O2 [label="Report Artifacts\nfigures, tables, conclusions"];
+  }
+
+  // --- Connections ---
+  D1 -> D2 -> P1 -> P2 -> P3 -> E1 -> M1 -> M2 -> M3 -> M4;
+
+  M3 -> S1;
+  S1 -> S2;
+
+  M3 -> A1;
+  A1 -> A2;
+
+  M3 -> R1;
+
+  S2 -> O1;
+  A2 -> O1;
+  R1 -> O1;
+
+  O1 -> O2;
+}
